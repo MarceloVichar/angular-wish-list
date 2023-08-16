@@ -1,6 +1,9 @@
 # angular-wish-list
 Lista de desejos desenvolvida em AngularJs
 
+## Protótipo
+https://www.figma.com/proto/bflhqaaAnDWoAVs5MXJsMe/Untitled?type=design&node-id=1-163&t=4K8t3BuVRZHYyJ2p-0&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A163
+
 ## Checklist
 
 - [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.

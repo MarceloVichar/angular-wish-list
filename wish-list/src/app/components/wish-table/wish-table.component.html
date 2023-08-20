@@ -1,0 +1,78 @@
+<div class="flex flex-col overflow-hidden my-2">
+  <div *ngIf="items.length === 0" class="flex justify-center">
+    <span class="pt-8 text-xl text-gray-600 font-semibold capitalize">
+      Nenhum item encontrado
+    </span>
+  </div>
+  <div *ngIf="items.length > 0" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class=" inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-hidden rounded shadow">
+        <table class="min-w-full text-center lg:shadow">
+          <thead *ngIf="items.length !== 0" class="border-b hidden lg:table-header-group">
+            <tr class="bg-secondary">
+              <th class="text-sm p-2.5 whitespace-nowrap capitalize">
+                Nome
+              </th>
+              <th class="text-sm p-2.5 whitespace-nowrap capitalize">
+                Descrição
+              </th>
+              <th class="text-sm p-2.5 whitespace-nowrap capitalize">
+                Preço
+              </th>
+              <th class="text-sm p-2.5 whitespace-nowrap capitalize">
+                Mês programado
+              </th>
+              <th class="text-sm p-2.5 whitespace-nowrap capitalize">
+                Ações
+              </th>
+            </tr>
+          </thead>
+          <tbody class="grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:table-row-group">
+            <tr *ngFor="let item of items; let i = index" class="bg-base-200 lg:bg-white border border-b-0 shadow-md lg:shadow-none block lg:border-b lg:border-0 lg:table-row mb-5 lg:mb-0">
+              <td
+                class="text-xs font-semibold text-gray-600 p-4 whitespace-normal lg:whitespace-nowrap flex justify-between items-center gap-1 text-right lg:text-center lg:table-cell border-b lg:border-b-0 box-content h-5"
+              >
+                <span class="inline-block lg:hidden font-bold">Nome</span>
+                <div class="break-all lg:break-normal">
+                  {{ item.name }}
+                </div>
+              </td>
+              <td
+                class="text-xs font-semibold text-gray-600 p-4 whitespace-normal lg:whitespace-nowrap flex justify-between items-center gap-1 text-right lg:text-center lg:table-cell border-b lg:border-b-0 box-content h-5"
+              >
+                <span class="inline-block lg:hidden font-bold">Descricao</span>
+                <div class="break-all lg:break-normal">
+                  {{ item.description }}
+                </div>
+              </td>
+              <td
+                class="text-xs font-semibold text-gray-600 p-4 whitespace-normal lg:whitespace-nowrap flex justify-between items-center gap-1 text-right lg:text-center lg:table-cell border-b lg:border-b-0 box-content h-5"
+              >
+                <span class="inline-block lg:hidden font-bold">Preco</span>
+                <div class="break-all lg:break-normal">
+                  {{ item.price }}
+                </div>
+              </td>
+              <td
+                class="text-xs font-semibold text-gray-600 p-4 whitespace-normal lg:whitespace-nowrap flex justify-between items-center gap-1 text-right lg:text-center lg:table-cell border-b lg:border-b-0 box-content h-5"
+              >
+                <span class="inline-block lg:hidden font-bold">Mês programado</span>
+                <div class="break-all lg:break-normal">
+                  {{ item.month }}
+                </div>
+              </td>
+              <td
+                class="text-xs font-semibold text-gray-600 p-4 whitespace-normal lg:whitespace-nowrap flex justify-between items-center gap-1 text-right lg:text-center lg:table-cell border-b lg:border-b-0 box-content h-5"
+              >
+                <span class="inline-block lg:hidden font-bold">Ações</span>
+                <div class="break-all lg:break-normal" (click)="show.emit(item.id)">
+                  Ver
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

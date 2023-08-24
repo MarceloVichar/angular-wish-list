@@ -1,3 +1,8 @@
 <div>
+  <div class="flex justify-end">
+    <a routerLink="wish/create">
+      <button class="btn btn-primary">Adicionar</button>
+    </a>
+  </div>
   <app-wish-table [items]="data" (show)="showItem($event)"/>
 </div>

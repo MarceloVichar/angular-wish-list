@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Wish} from "../../interfaces/wish";
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  data: Wish[] = [
-    {
-      name: '231',
-      month: '432',
-      description: 'Descricao',
-      price: 23,
-      id: 43
-    }
-  ]
+  data: Wish[] = []
 
-  constructor(private router: Router) {}
+  ngOnInit() {
+    let wishList = []
+    const wishListInStorage = localStorage.getItem('wishList')
+    if (wishListInStorage) {
+      wishList = JSON.parse(wishListInStorage)
+    }
+    this.data = wishList
+  }
+
+  constructor(private router: Router) {
+  }
 
   showItem(id: string | number) {
     this.router.navigate(['wish', id])

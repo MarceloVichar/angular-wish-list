@@ -1,0 +1,81 @@
+<form #form="ngForm" (ngSubmit)="onSubmit()" class="w-full lg:w-1/2 m-auto">
+  <div class="grid lg:grid-cols-2 gap-2">
+    <label>
+      <p class="text-sm">Nome</p>
+      <input
+        [(ngModel)]="model.name"
+        type="text"
+        name="name"
+        class="input input-bordered w-full"
+        placeholder="Nome"
+        #name="ngModel"
+        required
+      >
+      <div
+        *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="text-error text-sm mt-1"
+      >
+        Nome é obrigatório.
+      </div>
+    </label>
+    <label>
+      <p class="text-sm">Descrição</p>
+      <input
+        [(ngModel)]="model.description"
+        type="text"
+        name="description"
+        class="input input-bordered w-full"
+        placeholder="Descrição"
+        pattern="^.{5,}$"
+        #description="ngModel"
+      >
+      <div
+        *ngIf="description.invalid && (description.dirty || description.touched)"
+        class="text-error text-sm mt-1"
+      >
+        A descrição deve ter tamanho mínimo de 5.
+      </div>
+    </label>
+    <label>
+      <p class="text-sm">Preço</p>
+      <input
+        [(ngModel)]="model.price"
+        type="number"
+        step="0.02"
+        name="prince"
+        class="input input-bordered w-full"
+        placeholder="Nome"
+        #price="ngModel"
+        required
+      >
+      <div
+        *ngIf="price.invalid && (price.dirty || price.touched)"
+        class="text-error text-sm mt-1"
+      >
+        Preço é obrigatório.
+      </div>
+    </label>
+    <label>
+      <p class="text-sm">Mês para compra</p>
+      <select
+        [(ngModel)]="model.month"
+        name="month"
+        class="select select-bordered w-full"
+        #month="ngModel"
+        required
+      >
+        <option value="" disabled selected>Selecione o mês</option>
+        <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+      </select>
+      <div *ngIf="month.invalid && (month.dirty || month.touched)"
+           class="text-error text-sm mt-1">Selecione um mês válido.
+      </div>
+    </label>
+  </div>
+  <div class="flex justify-between mt-4">
+    <a routerLink="">
+      <button class="btn btn-outline btn-error">Cancelar</button>
+    </a>
+    <button class="btn btn-primary" [disabled]="form.invalid">Salvar</button>
+  </div>
+</form>

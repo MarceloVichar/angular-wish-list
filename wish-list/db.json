@@ -1,0 +1,49 @@
+{
+  "wishes": [
+    {
+      "id": 1,
+      "name": "Produto A",
+      "description": "Descrição do Produto A",
+      "price": "22.10",
+      "month": "Janeiro",
+      "status": "pending"
+    },
+    {
+      "id": 2,
+      "name": "Produto B",
+      "description": "Descrição do Produto B",
+      "price": "22.10",
+      "month": "Fevereiro",
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "name": "Produto C",
+      "description": "Descrição do Produto C",
+      "price": "22.10",
+      "month": "Março",
+      "status": "ready"
+    },
+    {
+      "name": "teste",
+      "description": "teste",
+      "price": 32,
+      "month": "Novembro",
+      "status": "pending",
+      "id": 4
+    },
+    {
+      "isTrusted": true,
+      "status": "pending",
+      "id": 5
+    },
+    {
+      "name": "teste",
+      "description": "novo pra teste",
+      "price": 21,
+      "month": "Fevereiro",
+      "status": "pending",
+      "id": 6
+    }
+  ]
+}

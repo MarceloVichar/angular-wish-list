@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Wish} from "../../interfaces/wish";
 import {Router} from '@angular/router';
+import {WishService} from "../../services/wish.service";
 
 @Component({
   selector: 'app-home',
@@ -10,16 +11,19 @@ import {Router} from '@angular/router';
 export class HomeComponent {
   data: Wish[] = []
 
-  ngOnInit() {
-    let wishList = []
-    const wishListInStorage = localStorage.getItem('wishList')
-    if (wishListInStorage) {
-      wishList = JSON.parse(wishListInStorage)
-    }
-    this.data = wishList
+  constructor(private wishService: WishService, private router: Router) {
   }
 
-  constructor(private router: Router) {
+
+  async ngOnInit() {
+    await this.fetchItems()
+  }
+
+  async fetchItems() {
+    (await this.wishService.getWishes({status: 'pending'}))
+      .subscribe((wishes: Wish[]) => {
+        this.data = wishes
+      })
   }
 
   showItem(id: string | number) {

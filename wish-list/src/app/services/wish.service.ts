@@ -12,6 +12,7 @@ export class WishService {
 
   constructor(private http: HttpClient) { }
 
+  // Aqui uso uma requisição assincrona com Promise e Observable
   async getWishes(params?: any): Promise<Observable<Wish[]>> {
     return this.http.get<any[]>(this.apiUrl, {params});
   }

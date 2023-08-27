@@ -1,8 +1,22 @@
 <div>
-  <div class="flex justify-end">
+  <h1 class="text-lg font-bold uppercase text-center">Desejos</h1>
+  <div class="flex justify-between flex-col sm:flex-row">
+    <input
+      type="text"
+      class="input input-bordered"
+      placeholder="Pesquisar"
+      [(ngModel)]="search"
+      (input)="onSearchChange()"
+    >
     <a routerLink="wish/create">
-      <button class="btn btn-primary">Adicionar</button>
+      <button class="btn btn-primary w-full">Adicionar</button>
     </a>
   </div>
-  <app-wish-table [items]="data" (show)="showItem($event)"/>
+  <app-wish-table
+    [items]="data"
+    (show)="showItem($event)"
+    (edit)="editItem($event)"
+    (check)="checkItem($event)"
+    (delete)="deleteItem($event)"
+  />
 </div>

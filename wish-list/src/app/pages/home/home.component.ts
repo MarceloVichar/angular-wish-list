@@ -10,6 +10,7 @@ import {WishService} from "../../services/wish.service";
 })
 export class HomeComponent {
   data: Wish[] = []
+  search: string = '';
 
   constructor(private wishService: WishService, private router: Router) {
   }
@@ -19,14 +20,42 @@ export class HomeComponent {
     await this.fetchItems()
   }
 
+  async onSearchChange() {
+    await this.fetchItems();
+  }
+
   async fetchItems() {
-    (await this.wishService.getWishes({status: 'pending'}))
-      .subscribe((wishes: Wish[]) => {
-        this.data = wishes
+    const params: any = {status: 'pending'};
+    if (this.search) {
+      params['name'] = this.search;
+    }
+    (await this.wishService.getWishes(params))
+      .subscribe({
+        next: (wishes: Wish[]) => this.data = wishes,
+        error: (err) => console.error('Erro ao buscar', err)
       })
   }
 
   showItem(id: string | number) {
     this.router.navigate(['wish', id])
+  }
+
+  async checkItem(id: string | number) {
+    (await this.wishService.markAsReady(id))
+      .subscribe({
+        next: () => this.fetchItems(),
+        error: (err) => console.error('Erro ao alterar', err)
+      })
+  }
+
+ editItem(id: string | number) {
+    this.router.navigate(['wish', id, 'edit'])
+  }
+  async deleteItem(id: string | number) {
+    (await this.wishService.deleteWish(id))
+      .subscribe({
+        next: () => this.fetchItems(),
+        error: (err) => console.error('Erro ao remover', err)
+      })
   }
 }

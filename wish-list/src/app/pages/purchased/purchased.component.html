@@ -1,1 +1,13 @@
-<p>purchased works!</p>
+<div>
+  <h1 class="text-lg font-bold uppercase text-center">Comprados</h1>
+  <div class="flex justify-between flex-col sm:flex-row">
+    <input
+      type="text"
+      class="input input-bordered"
+      placeholder="Pesquisar"
+      [(ngModel)]="search"
+      (input)="onSearchChange()"
+    >
+  </div>
+  <app-purchased-table [items]="data" (show)="showItem($event)" (delete)="deleteItem($event)" />
+</div>

@@ -12,12 +12,27 @@ export class WishService {
 
   constructor(private http: HttpClient) { }
 
-  // Aqui uso uma requisição assincrona com Promise e Observable
   async getWishes(params?: any): Promise<Observable<Wish[]>> {
     return this.http.get<any[]>(this.apiUrl, {params});
   }
 
+  async getWish(id: number | string | null): Promise<Observable<Wish>> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
   async createWish(wish: Wish): Promise<Observable<any>> {
     return this.http.post<any>(this.apiUrl, wish);
+  }
+
+  async editWish(id: number | string | null, wish: Wish): Promise<Observable<any>> {
+    return this.http.patch<any>(`${this.apiUrl}/${id}`, wish);
+  }
+
+  async markAsReady(id: number | string | null): Promise<Observable<any>> {
+    return this.http.patch<any>(`${this.apiUrl}/${id}`, { status: 'ready' });
+  }
+
+  async deleteWish(id: number | string | null): Promise<Observable<any>> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
 }

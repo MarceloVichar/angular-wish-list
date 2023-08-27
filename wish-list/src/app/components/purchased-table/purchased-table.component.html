@@ -20,9 +20,6 @@
               Preço
             </th>
             <th class="text-sm p-2.5 whitespace-nowrap capitalize">
-              Mês programado
-            </th>
-            <th class="text-sm p-2.5 whitespace-nowrap capitalize">
               Ações
             </th>
           </tr>
@@ -57,44 +54,15 @@
             <td
               class="text-xs font-semibold text-gray-600 p-4 whitespace-normal lg:whitespace-nowrap flex justify-between items-center gap-1 text-right lg:text-center lg:table-cell border-b lg:border-b-0 box-content h-5"
             >
-              <span class="inline-block lg:hidden font-bold">Mês programado</span>
-              <div class="break-all lg:break-normal">
-                {{ item.month }}
-              </div>
-            </td>
-            <td
-              class="text-xs font-semibold text-gray-600 p-4 whitespace-normal lg:whitespace-nowrap flex justify-between items-center gap-1 text-right lg:text-center lg:table-cell border-b lg:border-b-0 box-content h-5"
-            >
               <span class="inline-block lg:hidden font-bold">Ações</span>
-              <div>
-                <div class="material-icons cursor-pointer text-info" title="Visualizar" (click)="show.emit(item.id)">
-                  info
-                </div>
-                <div class="material-icons cursor-pointer text-warning" title="Editar" (click)="edit.emit(item.id)">
-                  edit
-                </div>
-                <label class="material-icons cursor-pointer text-success" title="Marcar como comprado"
-                     for="check_modal">
-                  done
-                </label>
-                <label class="material-icons cursor-pointer text-error" title="Remover"
+              <div class="material-icons cursor-pointer text-info" title="Visualizar" (click)="show.emit(item.id)">
+                info
+              </div>
+              <label class="material-icons cursor-pointer text-error" title="Remover"
                      for="delete_modal">
-                  delete
-                </label>
-              </div>
+                delete
+              </label>
             </td>
-            <input type="checkbox" id="check_modal" class="modal-toggle"/>
-            <div class="modal">
-              <div class="modal-box">
-                <h3 class="font-bold text-lg">Marcar como comprado</h3>
-                <p class="py-4">Você não poderá desfazer isso</p>
-                <div class="modal-action flex justify-between">
-                  <label for="check_modal" class="btn">Cancelar</label>
-                  <label for="check_modal" class="btn btn-primary" (click)="check.emit(item.id)">Confirmar</label>
-                </div>
-              </div>
-            </div>
-
             <input type="checkbox" id="delete_modal" class="modal-toggle"/>
             <div class="modal">
               <div class="modal-box">

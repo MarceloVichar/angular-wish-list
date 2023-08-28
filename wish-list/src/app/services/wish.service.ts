@@ -25,11 +25,11 @@ export class WishService {
   }
 
   async editWish(id: number | string | null, wish: Wish): Promise<Observable<any>> {
-    return this.http.patch<any>(`${this.apiUrl}/${id}`, wish);
+    return this.http.put<any>(`${this.apiUrl}/${id}`, wish);
   }
 
   async markAsReady(id: number | string | null): Promise<Observable<any>> {
-    return this.http.patch<any>(`${this.apiUrl}/${id}`, { status: 'ready' });
+    return this.http.put<any>(`${this.apiUrl}/${id}`, { status: 'ready' });
   }
 
   async deleteWish(id: number | string | null): Promise<Observable<any>> {

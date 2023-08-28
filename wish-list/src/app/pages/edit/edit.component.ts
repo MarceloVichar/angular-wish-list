@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Wish} from "../../interfaces/wish";
-import { Location } from '@angular/common';
+import {Location} from '@angular/common';
 import {ActivatedRoute} from "@angular/router";
 import {WishService} from "../../services/wish.service";
 import {Router} from "@angular/router";
@@ -35,13 +35,13 @@ export class EditComponent {
   }
 
   async onSubmit(form: Wish) {
-    if (!form.id) { return }
-    try {
-      (await this.wishService.editWish(form.id, {...form, status: 'pending'})).subscribe();
-      this.router.navigate([''])
-    } catch (e) {
-      console.error('Erro ao criar desejo:', e);
+    if (!form.id) {
+      return
     }
+    (await this.wishService.editWish(form.id, {...form, status: 'pending'})).subscribe({
+      next: () => this.router.navigate(['']),
+      error: (e) => console.error('Erro ao editar desejo:', e)
+    });
   }
 
   back(): void {

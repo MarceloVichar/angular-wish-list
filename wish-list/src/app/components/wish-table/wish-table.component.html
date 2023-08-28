@@ -74,35 +74,35 @@
                   edit
                 </div>
                 <label class="material-icons cursor-pointer text-success" title="Marcar como comprado"
-                     for="check_modal">
+                       [for]="'check' + item.id">
                   done
                 </label>
                 <label class="material-icons cursor-pointer text-error" title="Remover"
-                     for="delete_modal">
+                     [for]="'delete' + item.id">
                   delete
                 </label>
               </div>
             </td>
-            <input type="checkbox" id="check_modal" class="modal-toggle"/>
+            <input type="checkbox" [id]="'check' + item.id" class="modal-toggle"/>
             <div class="modal">
               <div class="modal-box">
                 <h3 class="font-bold text-lg">Marcar como comprado</h3>
                 <p class="py-4">Você não poderá desfazer isso</p>
                 <div class="modal-action flex justify-between">
-                  <label for="check_modal" class="btn">Cancelar</label>
-                  <label for="check_modal" class="btn btn-primary" (click)="check.emit(item.id)">Confirmar</label>
+                  <label [for]="'check' + item.id" class="btn">Cancelar</label>
+                  <label [for]="'check' + item.id" class="btn btn-primary" (click)="check.emit(item.id)">Confirmar</label>
                 </div>
               </div>
             </div>
 
-            <input type="checkbox" id="delete_modal" class="modal-toggle"/>
+            <input type="checkbox" [id]="'delete' + item.id" class="modal-toggle"/>
             <div class="modal">
               <div class="modal-box">
                 <h3 class="font-bold text-lg">Apagar registro</h3>
                 <p class="py-4">Você não poderá desfazer isso</p>
                 <div class="modal-action flex justify-between">
-                  <label for="delete_modal" class="btn">Cancelar</label>
-                  <label for="delete_modal" class="btn btn-error" (click)="delete.emit(item.id)">Remover</label>
+                  <label [for]="'delete' + item.id" class="btn">Cancelar</label>
+                  <label [for]="'delete' + item.id" class="btn btn-error" (click)="delete.emit(item.id)">Remover</label>
                 </div>
               </div>
             </div>

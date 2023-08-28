@@ -59,18 +59,18 @@
                 info
               </div>
               <label class="material-icons cursor-pointer text-error" title="Remover"
-                     for="delete_modal">
+                     [for]="'delete' + item.id">
                 delete
               </label>
             </td>
-            <input type="checkbox" id="delete_modal" class="modal-toggle"/>
+            <input type="checkbox" [id]="'delete' + item.id" class="modal-toggle"/>
             <div class="modal">
               <div class="modal-box">
                 <h3 class="font-bold text-lg">Apagar registro</h3>
                 <p class="py-4">Você não poderá desfazer isso</p>
                 <div class="modal-action flex justify-between">
-                  <label for="delete_modal" class="btn">Cancelar</label>
-                  <label for="delete_modal" class="btn btn-error" (click)="delete.emit(item.id)">Remover</label>
+                  <label [for]="'delete' + item.id" class="btn">Cancelar</label>
+                  <label [for]="'delete' + item.id" class="btn btn-error" (click)="delete.emit(item.id)">Remover</label>
                 </div>
               </div>
             </div>

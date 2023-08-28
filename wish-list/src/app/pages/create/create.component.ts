@@ -10,15 +10,16 @@ import {WishService} from "../../services/wish.service";
 })
 export class CreateComponent {
 
-  constructor(private router: Router, private wishService: WishService) {}
+  constructor(private router: Router, private wishService: WishService) {
+  }
 
   async onSubmit(form: Wish) {
-    if (!form.name) { return }
-    try {
-      (await this.wishService.createWish({...form, status: 'pending'})).subscribe();
-      this.router.navigate([''])
-    } catch (e) {
-      console.error('Erro ao criar desejo:', e);
+    if (!form.name) {
+      return
     }
+    (await this.wishService.createWish({...form, status: 'pending'})).subscribe({
+      next: () => this.router.navigate(['']),
+      error: (e) => console.error('Erro ao criar desejo:', e)
+    });
   }
 }

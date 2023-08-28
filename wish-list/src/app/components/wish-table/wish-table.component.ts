@@ -13,3 +13,4 @@ export class WishTableComponent {
   @Output() check = new EventEmitter<string | number>()
   @Output() delete = new EventEmitter<string | number>()
 }
+

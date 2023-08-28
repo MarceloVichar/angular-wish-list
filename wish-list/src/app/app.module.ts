@@ -15,6 +15,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { PurchasedTableComponent } from './components/purchased-table/purchased-table.component';
 import { EditComponent } from './pages/edit/edit.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { EditComponent } from './pages/edit/edit.component';
     WishFormComponent,
     PurchasedTableComponent,
     EditComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

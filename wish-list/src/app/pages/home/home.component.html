@@ -12,7 +12,9 @@
       <button class="btn btn-primary w-full">Adicionar</button>
     </a>
   </div>
+  <app-spinner *ngIf="loading" />
   <app-wish-table
+    *ngIf="!loading"
     [items]="data"
     (show)="showItem($event)"
     (edit)="editItem($event)"

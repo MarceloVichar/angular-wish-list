@@ -12,7 +12,7 @@
       <button class="btn btn-primary w-full">Adicionar</button>
     </a>
   </div>
-  <app-spinner *ngIf="loading" />
+  <app-spinner *ngIf="loading"/>
   <app-wish-table
     *ngIf="!loading"
     [items]="data"
@@ -21,4 +21,12 @@
     (check)="checkItem($event)"
     (delete)="deleteItem($event)"
   />
+  <div class="text-right mt-8">
+    <a routerLink="contact">
+      <button class="btn btn-primary btn-xs">Contato</button>
+    </a>
+    <div class="py-4">
+      <router-outlet/>
+    </div>
+  </div>
 </div>

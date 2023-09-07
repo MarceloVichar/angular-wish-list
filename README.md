@@ -4,6 +4,9 @@ Lista de desejos desenvolvida em AngularJs
 ## Site
 https://angular-wish-list-mauve.vercel.app/
 
+## Vídeo de apresentação
+https://youtu.be/hkg3dMBYSto
+
 ## Protótipo
 
 ### Web
